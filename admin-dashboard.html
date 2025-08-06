@@ -1,13 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="p-10 bg-gray-100">
-  <h1 class="text-3xl font-bold">Welcome, Admin!</h1>
-  <p class="mt-4 text-gray-700">This is your admin dashboard.</p>
+<body class="bg-gray-100 font-sans">
+    <div class="flex h-screen">
+        <aside class="bg-gray-800 text-white w-64 flex flex-col space-y-6 py-7 px-2">
+            <a href="#" class="text-white text-2xl font-semibold uppercase tracking-wider text-center">Admin Panel</a>
+            <nav>
+                <a href="#" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700" onclick="showSection('dashboard-content')">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700" onclick="showSection('bookings-content')">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Bookings</span>
+                </a>
+                <a href="#" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700" onclick="showSection('users-content')">
+                    <i class="fas fa-users"></i>
+                    <span>Users</span>
+                </a>
+                <a href="#" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700" onclick="showSection('settings-content')">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+                <h1 id="page-title" class="text-2xl font-semibold text-gray-800">Dashboard Overview</h1>
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-600">Admin User</span>
+                    <i class="fas fa-user-circle text-2xl text-gray-400"></i>
+                </div>
+            </header>
+
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 p-6">
+
+                <div id="dashboard-content" class="content-section">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-gray-500 uppercase tracking-wide font-bold">Total Bookings</h3>
+                                <i class="fas fa-calendar-check text-2xl text-pink-500"></i>
+                            </div>
+                            <div class="mt-4 text-3xl font-bold text-gray-800">452</div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-gray-500 uppercase tracking-wide font-bold">Pending Requests</h3>
+                                <i class="fas fa-hourglass-half text-2xl text-yellow-500"></i>
+                            </div>
+                            <div class="mt-4 text-3xl font-bold text-gray-800">18</div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-gray-500 uppercase tracking-wide font-bold">Total Users</h3>
+                                <i class="fas fa-users text-2xl text-green-500"></i>
+                            </div>
+                            <div class="mt-4 text-3xl font-bold text-gray-800">1,245</div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-gray-500 uppercase tracking-wide font-bold">Revenue</h3>
+                                <i class="fas fa-dollar-sign text-2xl text-blue-500"></i>
+                            </div>
+                            <div class="mt-4 text-3xl font-bold text-gray-800">$50,210</div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">Recent Bookings</h2>
+                        <p class="text-gray-500">This is where a table of recent booking data would go.</p>
+                    </div>
+                </div>
+
+                <div id="bookings-content" class="content-section hidden">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">Bookings Management</h2>
+                        <p class="text-gray-500">Here you can view, edit, and manage all bookings.</p>
+                        </div>
+                </div>
+
+                <div id="users-content" class="content-section hidden">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">User Management</h2>
+                        <p class="text-gray-500">Here you can manage user accounts, roles, and permissions.</p>
+                        </div>
+                </div>
+
+                <div id="settings-content" class="content-section hidden">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">Site Settings</h2>
+                        <p class="text-gray-500">This is where you would configure global site settings.</p>
+                        </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Get all content sections and hide them
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Show the selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.remove('hidden');
+            }
+
+            // Update the page title
+            const titleElement = document.getElementById('page-title');
+            if (titleElement) {
+                switch(sectionId) {
+                    case 'dashboard-content':
+                        titleElement.textContent = 'Dashboard Overview';
+                        break;
+                    case 'bookings-content':
+                        titleElement.textContent = 'Bookings Management';
+                        break;
+                    case 'users-content':
+                        titleElement.textContent = 'User Management';
+                        break;
+                    case 'settings-content':
+                        titleElement.textContent = 'Site Settings';
+                        break;
+                    default:
+                        titleElement.textContent = 'Admin Panel';
+                }
+            }
+        }
+    </script>
 </body>
 </html>
